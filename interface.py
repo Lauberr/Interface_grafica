@@ -1,37 +1,53 @@
-import pyglet
-import random
 import tkinter as tk
-from tkinter import ttk 
+from tkinter import *
 
+class Table:
+    def __init__(self, root):
+        # Inserindo cabeçalhos na primeira linha da tabela
+        for j in range(headerlen):
+            self.e = Entry(root, width=12, fg='blue', font=('Arial', 16, 'bold'))
+            self.e.grid(row=0, column=j)
+            self.e.insert(END, headers[j])
+        
+        # Inserindo dados
+        for i in range(total_rows):
+            for j in range(total_columns):
+                self.e = Entry(root, width=12, fg='black', font=('Arial', 16))
+                self.e.grid(row=i+1, column=j)
+                self.e.insert(END, lst[i][j])
 
-redes = ['192.168.10.0/24'
-'10.20.30.0/24'
-'172.16.0.0/16'
-'192.0.2.0/24'
-'198.51.100.0/24'
-'10.0.0.0/8'
-'172.31.0.0/16'
-'192.168.1.0/24'
-'203.0.113.0/24'
-'172.20.0.0/16']
+def abrir_nova_janela():
+    nova_janela = tk.Toplevel(root)
+    nova_janela.title("Nova Janela")
+    label = tk.Label(nova_janela, text="Esta é uma nova janela!")
+    label.pack(padx=20, pady=20)
 
-window = tk.Tk()
-window.geometry('1280x960')
-print(pyglet.window.Window())
-window.title("teste")
+# Dados da tabela
+lst = [
+    (1, 'Subrede', 'Qtd. de end', 'Intervalo', '1 end valido', 'Ult. end valido', 'Mascara'),
+    (2, 'Subrede', 'Qtd. de end', 'Intervalo', '1 end valido', 'Ult. end valido', 'Mascara'),
+    (3, 'Subrede', 'Qtd. de end', 'Intervalo', '1 end valido', 'Ult. end valido', 'Mascara'),
+    (4, 'Subrede', 'Qtd. de end', 'Intervalo', '1 end valido', 'Ult. end valido', 'Mascara'),
+    (5, 'Subrede', 'Qtd. de end', 'Intervalo', '1 end valido', 'Ult. end valido', 'Mascara')
+]
 
-table = ttk.Treeview(window, columns= ('Subrede', 'Qtd. de Estações', 'Endereços da sub-rede', 'Primeiro endereço', 'Broadcast', 'Máscara'), show='headings')
-table.heading('Subrede', text='Subrede')
-table.heading('Qtd. de Estações', text='Qtd. de Estações')
-table.heading('Endereços da sub-rede', text='Endereços da sub-rede')
-table.heading('Primeiro endereço', text='Primeiro endereço')
-table.heading('Máscara', text='Máscara')
-table.heading('Broadcast', text='Broadcast')
+headers = ['ID' ,'Subrede', 'Qtd. Estações', 'End. subrede', 
+                   '1° endereço', 'Broadcast', 'Máscara']
 
-table.pack(fill='both',expand=True)
+# Número total de linhas e colunas na lista
+total_rows = len(lst)
+total_columns = len(lst[0])
+headerlen = len(headers)
 
-for i in range(20):
-    table.insert(parent= '', index=0, values=(redes[random.randint(0,9)]))
+# Criando a janela principal
+root = Tk()
 
+# Botão para abrir a nova janela
+botao = Button(root, text="Clica aqui", width=15, height=1, command=abrir_nova_janela)
+botao.grid(column=3, row=total_rows + 2)
 
-window.mainloop()
+# Instanciando a tabela
+t = Table(root)
+
+# Loop principal da aplicação Tkinter
+root.mainloop()
