@@ -22,6 +22,7 @@ def gerar_enderecos_subredes(subredes):
         enderecos.append((primeiro_endereco, ultimo_endereco, mascara))
     return enderecos
 
+
 class Table:
     def __init__(self, root, headers, data):
         headerlen = len(headers)
@@ -57,6 +58,7 @@ class Table:
                 self.e.grid(row=i+1, column=j)
                 self.e.insert(END, data[i][j])
 
+
 def abrir_nova_janela():
     nova_janela = tk.Toplevel(root)
     nova_janela.title("Resultados das Sub-redes")
@@ -91,6 +93,7 @@ def abrir_nova_janela():
         tk.Label(nova_janela, text=f"Erro: {str(e)}").pack(padx=20, pady=10)
     except Exception as e:
         tk.Label(nova_janela, text=f"Erro: Endereço IP inválido ou outro erro.").pack(padx=20, pady=10)
+
 
 def validate_integer(P):
     if P.isdigit() or P == "":
