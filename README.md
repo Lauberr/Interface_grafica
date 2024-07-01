@@ -4,6 +4,7 @@
 Projeto realizado para matéria de Redes de Computadores, 
 acompanhado pelo professor Alexandre Yuji Kajihara
 
+## ANALISE
 # Implemente um Programa para Cálculo de Sub-redes
 
 Implemente um programa que retorne o primeiro e o último endereço e a máscara de cada sub-rede, baseados no endereço IP, na máscara e na quantidade de sub-redes fornecidos pelo usuário.
@@ -14,7 +15,7 @@ Implemente um programa que retorne o primeiro e o último endereço e a máscara
 - Documentação
 - Relatório
 
-## Passo a Passo
+## PROJETO Passo a Passo 
 
 Para implementar um programa em Python que retorne o primeiro e o último endereço de cada sub-rede, bem como a máscara de cada sub-rede com base no endereço IP, na máscara e na quantidade de sub-redes fornecidos pelo usuário, podemos dividir o projeto em várias partes. requisitos:
 
@@ -58,3 +59,5 @@ Para implementar um programa em Python que retorne o primeiro e o último endere
 - **Exibição da Máscara:** Exibir a máscara de sub-rede para cada sub-rede.
 
 ### Passo 6: Implementação em Python
+
+## TESTE VALIDAÇÃO 
