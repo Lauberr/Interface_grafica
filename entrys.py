@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import *
 
+
+
 def abrir_nova_janela():
     nova_janela = tk.Toplevel(root)
     nova_janela.title("Nova Janela")
@@ -11,7 +13,8 @@ def abrir_nova_janela():
 def show_selected_option():
     selected_option = selected_var.get()
     label.config(text=f"Você selecionou: {selected_option}")
-# Criando a janela principal
+
+
 root = tk.Tk()
 root.geometry("200x300")
 

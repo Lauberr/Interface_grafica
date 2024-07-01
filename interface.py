@@ -1,4 +1,5 @@
 import tkinter as tk
+from entrys import *
 from tkinter import *
 
 class Table:
@@ -16,11 +17,9 @@ class Table:
                 self.e.grid(row=i+1, column=j)
                 self.e.insert(END, lst[i][j])
 
-def abrir_nova_janela():
-    nova_janela = tk.Toplevel(root)
-    nova_janela.title("Nova Janela")
-    label = tk.Label(nova_janela, text="Esta é uma nova janela!")
-    label.pack(padx=20, pady=20)
+
+def calcular():
+    print(lst)
 
 # Dados da tabela
 lst = [
@@ -43,7 +42,7 @@ headerlen = len(headers)
 root = Tk()
 
 # Botão para abrir a nova janela
-botao = Button(root, text="Clica aqui", width=15, height=1, command=abrir_nova_janela)
+botao = Button(root, text="Calcular", width=15, height=1, command=calcular)
 botao.grid(column=3, row=total_rows + 2)
 
 # Instanciando a tabela
