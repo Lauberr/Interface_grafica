@@ -28,16 +28,32 @@ class Table:
         total_rows = len(data)
         total_columns = len(headers)
         
+        # Criando um frame para a tabela dentro do canvas
+        self.canvas = tk.Canvas(root)
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
+        # Adicionando uma barra de rolagem vertical
+        self.scrollbar = tk.Scrollbar(root, orient=tk.VERTICAL, command=self.canvas.yview)
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        # Conectando a barra de rolagem ao canvas
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        self.canvas.bind('<Configure>', lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
+        
+        # Frame que conterá a tabela
+        self.table_frame = tk.Frame(self.canvas)
+        self.canvas.create_window((0, 0), window=self.table_frame, anchor=tk.NW)
+        
         # Inserindo cabeçalhos na primeira linha da tabela
         for j in range(headerlen):
-            self.e = Entry(root, width=12, fg='blue', font=('Arial', 10, 'bold'))
+            self.e = Entry(self.table_frame, width=16, fg='blue', font=('Arial', 10, 'bold'))
             self.e.grid(row=0, column=j)
             self.e.insert(END, headers[j])
         
         # Inserindo dados
         for i in range(total_rows):
             for j in range(total_columns):
-                self.e = Entry(root, width=12, fg='black', font=('Arial', 10))
+                self.e = Entry(self.table_frame, width=16, fg='black', font=('Arial', 10))
                 self.e.grid(row=i+1, column=j)
                 self.e.insert(END, data[i][j])
 
@@ -63,11 +79,13 @@ def abrir_nova_janela():
 
         Table(nova_janela, headers, lst)
         
-        # Ajuste o tamanho da janela de acordo com o tamanho da tabela
+        # Ajustando o tamanho da janela de acordo com o tamanho da tabela
         nova_janela.update_idletasks()
-        largura = nova_janela.winfo_width()
-        altura = nova_janela.winfo_height()
-        nova_janela.geometry(f"{largura}x{altura}")
+        width = nova_janela.winfo_reqwidth()
+        height = nova_janela.winfo_reqheight()
+        x = (nova_janela.winfo_screenwidth() // 2) - (width // 2)
+        y = (nova_janela.winfo_screenheight() // 2) - (height // 2)
+        nova_janela.geometry(f"822x200")
 
     except ValueError as e:
         tk.Label(nova_janela, text=f"Erro: {str(e)}").pack(padx=20, pady=10)
@@ -81,7 +99,7 @@ def validate_integer(P):
         return False
 
 root = tk.Tk()
-root.geometry("300x300")
+root.geometry("210x300")
 
 vcmd = (root.register(validate_integer), '%P')
 
@@ -114,4 +132,4 @@ botao.grid(column=0, row=6, padx=10, pady=10)
 root.mainloop()
 
 
-#192.168.20.250
+#200.20.110.0
