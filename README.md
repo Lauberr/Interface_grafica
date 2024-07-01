@@ -15,8 +15,7 @@ Implemente um programa que retorne o primeiro e o último endereço e a máscara
 - Documentação
 - Relatório
 
-## PROJETO Passo a Passo 
-
+## PROJETO
 Para implementar um programa em Python que retorne o primeiro e o último endereço de cada sub-rede, bem como a máscara de cada sub-rede com base no endereço IP, na máscara e na quantidade de sub-redes fornecidos pelo usuário, podemos dividir o projeto em várias partes. requisitos:
 
 ### Passo 1: Coleta de Dados do Usuário
