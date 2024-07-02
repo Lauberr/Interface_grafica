@@ -1,6 +1,7 @@
 import ipaddress
 import math
 
+
 def coletar_dados():
     """
     Coleta dados de entrada do usuário: endereço IP, máscara de sub-rede e quantidade de sub-redes.
