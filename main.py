@@ -114,7 +114,7 @@ vcmd = (root.register(validate_integer), '%P')
 message_label = tk.Label(root, text="Endereço IP")
 message_label.grid(column=0, row=0)
 
-ip_entry = tk.Entry(root, width=30, validate="key", validatecommand=vcmd)
+ip_entry = tk.Entry(root, width=30)
 ip_entry.grid(column=0, row=1, padx=10, pady=10)
 
 message_label = tk.Label(root, text="Máscara")
