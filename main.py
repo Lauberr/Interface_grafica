@@ -3,6 +3,7 @@ from tkinter import *
 import math
 import ipaddress
 
+#Link GitHub: https://github.com/Lauberr/calculo_subrede.git
 
 
 def calcular_subredes(ip, quantidade_subredes): # parametros: endereço IP, o numero de subredes
