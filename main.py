@@ -5,7 +5,7 @@ import ipaddress
 
 
 
-def calcular_subredes(ip, quantidade_subredes):
+def calcular_subredes(ip, quantidade_subredes): # parametros: endereço IP, o numero de subredes
     bits_subrede = math.ceil(math.log2(quantidade_subredes)) # Nessa linha o ".ceil" arredonda o valor enquanto o ".log2" é uma função que calucla o log2 da quantidade de subredes.
     nova_prefix = ip.prefixlen + bits_subrede # O ".prefixlen" retorna o tamanho do endereço IP, e o nova_prefix é o endereço IP com o numero adicional de bits para as subredes.
     
@@ -13,21 +13,21 @@ def calcular_subredes(ip, quantidade_subredes):
         raise ValueError("Número de sub-redes é muito grande para o endereço IP fornecido.")
     
     subredes = list(ip.subnets(new_prefix=nova_prefix)) # gera uma lista de sub-redes a partir do endereço IP fornecido.
-    return subredes
+    return subredes # Retorna uma lista com as sub-redes geradas pelo IP e quantidade de subredes entregues como parametros.
 
 
-def gerar_enderecos_subredes(subredes):
+def gerar_enderecos_subredes(subredes): # parametro: uma lista com subredes de um endereço IP.
     enderecos = []
     for subrede in subredes:
         primeiro_endereco = subrede.network_address # Retorna o primeiro endereço IP da sub-rede.
         ultimo_endereco = subrede.broadcast_address # Retorna o ultimo endereço IP da sub-rede.
         mascara = subrede.netmask # Retorna a mascara de endereço da sub-rede.
         enderecos.append((primeiro_endereco, ultimo_endereco, mascara))
-    return enderecos
+    return enderecos # Retorna uma lista com o primeiro endereco, ultimo endereco e a mascara.
 
 
 class Table: # Classe para geração da tabela da segunda página.
-    def __init__(self, root, headers, data):
+    def __init__(self, root, headers, data): # parametros: root(janela), headers(cabeçalhos da tabela) e data(lista com o primeiro endereco, ultimo endereco e a mascara).
         headerlen = len(headers)
         total_rows = len(data)
         total_columns = len(headers) # Essas três linhas geram a tabela com cabeçalho e a quantidade de linhas e colunas.
@@ -99,11 +99,11 @@ def abrir_nova_janela(): # Função para gerar uma nova pagina na ação do cliq
         tk.Label(nova_janela, text=f"Erro: Endereço IP inválido ou outro erro.").pack(padx=20, pady=10)
 
 
-def validate_integer(P):
+def validate_integer(P): # parametros: P(string que representa o conteúdo do widget de entrada).
     if P.isdigit() or P == "": # Valida se o valor digitado é ou não um inteiro
-        return True
+        return True # Retorna true caso seja um digito.
     else:
-        return False
+        return False # Retorna false caso não seja um digito.
 
 
 root = tk.Tk()
